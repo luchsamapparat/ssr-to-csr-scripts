@@ -1,3 +1,7 @@
+param(
+    [bool] $Detach = $false
+)
+
 $backendApps = @(
     "01-ssr",
     "02-ssr-with-progressive-enhancement",
@@ -27,9 +31,13 @@ try
         $frontendPort++;
     }
     
-    ./logs.ps1
+    if (!$Detach) {
+        ./logs.ps1
+    }
 }
 finally
 {
-    ./stop.ps1
+    if (!$Detach) {
+        ./stop.ps1
+    }
 }

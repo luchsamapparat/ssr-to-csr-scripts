@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  01-ssr-backend:
+    build: ./01-ssr
+    ports:
+      - "8081:8080"
+  02-ssr-with-progressive-enhancement-backend:
+    build: ./02-ssr-with-progressive-enhancement
+    ports:
+      - "8082:8080"
+  03-ssr-with-partial-dom-updates-backend:
+    build: ./03-ssr-with-partial-dom-updates
+    ports:
+      - "8083:8080"
+  04-ssr-with-partial-csr-backend:
+    build: ./04-ssr-with-partial-csr
+    ports:
+      - "8084:8080"
+  05-csr-with-spa-backend:
+    build: ./05-csr-with-spa
+    ports:
+      - "8085:8080"
+  06-ssr-with-rehydration-backend:
+    build: ./06-ssr-with-rehydration
+    ports:
+      - "8086:8080"
+  06-ssr-with-rehydration-frontend:
+    build: ./06-ssr-with-rehydration/src/main/frontend
+    ports:
+      - "9001:3000"

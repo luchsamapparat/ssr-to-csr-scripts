@@ -1,4 +1,4 @@
-$directories = @(
+$backendApps = @(
     "01-ssr",
     "02-ssr-with-progressive-enhancement",
     "03-ssr-with-partial-dom-updates",
@@ -7,8 +7,18 @@ $directories = @(
     "06-ssr-with-rehydration"
 )
 
-foreach ($directory in $directories) {
-    cd $directory;
+$frontendApps = @(
+    "06-ssr-with-rehydration"
+)
+
+foreach ($app in $backendApps) {
+    cd $app;
     mvn clean install -DskipTests;
     cd..;
+}
+
+foreach ($app in $frontendApps) {
+    cd $app\src\main\frontend;
+    npm run build;
+    cd ..\..\..\..;
 }

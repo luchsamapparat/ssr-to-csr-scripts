@@ -4,3 +4,6 @@
 04-ssr-with-partial-csr
 05-csr-with-spa
 06-ssr-with-rehydration
+reports/*.json
+reports/*.html
+node_modules

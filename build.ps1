@@ -10,15 +10,3 @@ $backendApps = @(
 $frontendApps = @(
     "06-ssr-with-rehydration"
 )
-
-foreach ($app in $backendApps) {
-    cd $app;
-    mvn clean install -DskipTests;
-    cd..;
-}
-
-foreach ($app in $frontendApps) {
-    cd $app\src\main\frontend;
-    npm run build;
-    cd ..\..\..\..;
-}

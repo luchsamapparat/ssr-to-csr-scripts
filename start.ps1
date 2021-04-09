@@ -15,12 +15,13 @@ $frontendApps = @(
     "06-ssr-with-rehydration"
 )
 
-try
-{
+try {
+    $version = 1;
     $backendPort = 8081;
     foreach ($app in $backendApps) {
-        $jarPath = ".\$app\target\todo-app-0.0.1-SNAPSHOT.jar"
+        $jarPath = ".\$app\target\todo-app-$version.0.0-SNAPSHOT.jar"
         Start-Job -Name "$app-backend" -Scriptblock { java -jar $Using:jarPath --server.port=$Using:backendPort }
+        $version++;
         $backendPort++;
     }
 
@@ -35,8 +36,7 @@ try
         ./logs.ps1
     }
 }
-finally
-{
+finally {
     if (!$Detach) {
         ./stop.ps1
     }

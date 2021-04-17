@@ -14,6 +14,6 @@ declare -a directories=(
 for directory in "${directories[@]}"
 do
     cd $directory
-    cloc ./src --exclude-ext=json,md --not-match-f=Dockerfile
+    cloc ./src --exclude-ext=json,md --not-match-f=Dockerfile, --not-match-d=build-scripts
     cd ..
 done

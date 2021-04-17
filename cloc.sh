@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# sudo apt-get install cloc
+
 declare -a directories=(
     "01-ssr"
     "02-ssr-with-progressive-enhancement"

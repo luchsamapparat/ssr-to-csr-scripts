@@ -7,6 +7,8 @@ $backendApps = @(
     "06-ssr-with-rehydration"
 )
 
-$frontendApps = @(
-    "06-ssr-with-rehydration"
-)
+foreach ($app in $backendApps) {
+    cd $app;
+    ./mvnw clean install -DskipTests;
+    cd..;
+}

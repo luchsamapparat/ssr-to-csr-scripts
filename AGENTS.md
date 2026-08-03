@@ -21,6 +21,27 @@ Treat every repository as an independent Git worktree:
   Commits to an application belong to that application's branch, not to the root
   repository.
 
+## Branch lineage and rebasing
+
+The numbered application branches form a linear educational history. Each
+successor must be based directly on the current tip of its predecessor so that
+comparing adjacent branches shows only the architectural step introduced by the
+successor.
+
+- Never merge a predecessor branch into a successor branch. Rebase successors
+  onto the updated predecessor instead.
+- After changing a numbered demo, rebase every surviving downstream branch in
+  order, verify the ancestry and adjacent diffs, and publish rewritten branches
+  only with `--force-with-lease`.
+- Before rewriting branches, fetch all refs, require clean worktrees, record the
+  old branch tips, and create unpushed local safety refs.
+- Before committing a demo modernization, compile and test the application,
+  start the production build, open its user-facing URL in a browser, and verify
+  the representative task workflow.
+- Commit and push each completed demo separately. Do not begin the next demo's
+  modernization until the current branch and all downstream rebases have been
+  validated and published.
+
 The root clone helpers create this layout:
 
 ```powershell
